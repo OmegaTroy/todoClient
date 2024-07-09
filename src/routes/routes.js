@@ -3,6 +3,10 @@ import {taskAdd,taskView,taskDelete,taskUpdate} from '../controllers/Task.contro
 const router =Router();
 
 
+router.get('/',(req,res)=>{
+  res.send('Hello World!');
+})
+
 router.get('/task',taskView)
 
 router.post('/task',taskAdd)
