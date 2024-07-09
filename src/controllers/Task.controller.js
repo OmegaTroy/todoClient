@@ -9,7 +9,7 @@ export const taskAdd = (req,res)=>{
 
 export const taskView =async (req,res)=>{
   const tasks = await Task.find()
-  res.json(tasks)
+  res.status(200).json(tasks)
 }
 
 export const taskDelete = (req,res)=>{
@@ -31,7 +31,7 @@ export const taskUpdate = async(req,res)=>{
     await Task.findByIdAndUpdate({_id},{$set:{completed:completed}})
     res.status(200).json({message:`Task ${name} updated successfully`})
   }else{
-    await Task.updateOne({id},name,completed)
+    await Task.findByIdAndUpdate({_id},{$set:{name,completed}})
     res.status(200).json({message:`Task ${name} updated successfully`})
   }
 }
